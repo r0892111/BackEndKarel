@@ -13,14 +13,24 @@ import be.ucll.examenoefkv.service.BookService;
 
 @CrossOrigin(origins = "http://127.0.0.1:3000")
 @RestController
-// @RequestMapping("/books")
+@RequestMapping("/api/book")
 
 public class BookRestController {
     @Autowired 
     private BookService bookService;
 
-    @GetMapping("/api/book/all")
+    @GetMapping("/all")
     public List<Book> fetchBooks(){
         return bookService.getAllBooks();
+    }
+
+    @GetMapping("/totalValue")
+    public double getTotalValue(){
+        return bookService.getTotalValueOfCollection();
+    }
+
+    @GetMapping("/mostExpensive")
+    public Book getMostExpensive(){
+        return bookService.getMostExpensiveBook();
     }
 }

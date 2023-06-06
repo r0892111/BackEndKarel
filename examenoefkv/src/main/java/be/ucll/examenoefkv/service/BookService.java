@@ -7,8 +7,26 @@ import org.springframework.stereotype.Service;
 import be.ucll.examenoefkv.model.Book;
 @Service
 public class BookService {
+
+
     private List<Book> books = new ArrayList<>();
-    public BookService(){}
+    public BookService(){
+
+        Book aBookDonQuichot = new Book("Don Quichotte", 3, 20.7, true);
+        Book aBookHarryPotter = new Book("Harry Potter", 5, 20.07, false);
+        Book aBookJaneEyre = new Book("Jane Eyre", 4, 33.02, true);
+        Book aBookTheHobbit = new Book("The Hobbit", 1, 50.5, true);
+        Book aBookToKillAMockingbird = new Book("To kill a Mockingbird", 1, 35.03, false);
+        Book aBookTheSilentPatient = new Book("The Silent Patient", 7, 60, true);
+        // Book anExtraBook = new Book("The Extra", 3, 22.00, false);
+
+        addBook(aBookDonQuichot);
+        addBook(aBookHarryPotter);
+        addBook(aBookJaneEyre);
+        addBook(aBookToKillAMockingbird);
+        addBook(aBookTheHobbit);
+        addBook(aBookTheSilentPatient);
+    }
 
 
     public List<Book> getBooks(){
@@ -65,7 +83,7 @@ public class BookService {
 
     public Book getBookWithTitle(String title){
         for (Book book : books){
-            if (book.getTitle() == title){
+            if (book.getTitle().equals(title) ){
                 return book;
             }
         } 
@@ -101,5 +119,7 @@ public class BookService {
         
         return null;
     }
+
+
 
 }
